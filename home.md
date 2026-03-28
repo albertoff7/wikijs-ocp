@@ -2,7 +2,7 @@
 title: Wiki K8s
 description: 
 published: true
-date: 2026-03-28T15:52:05.764Z
+date: 2026-03-28T15:52:09.628Z
 tags: 
 editor: markdown
 dateCreated: 2026-03-28T15:24:22.022Z
