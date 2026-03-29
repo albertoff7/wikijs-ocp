@@ -1,0 +1,35 @@
+---
+title: Ingress
+description: 
+published: true
+date: 2026-03-29T21:13:55.531Z
+tags: 
+editor: markdown
+dateCreated: 2026-03-29T21:13:55.531Z
+---
+
+# Ingress
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-chaos-dashboard-under-subpath
+  namespace: chaos-mesh
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      sub_filter '<head>' '<head> <base href="/chaos-mesh/">';
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /chaos-mesh/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: chaos-dashboard
+                port:
+                  number: 2333
+```                  
